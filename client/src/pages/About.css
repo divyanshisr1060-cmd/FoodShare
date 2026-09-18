@@ -1,0 +1,140 @@
+.about {
+  padding: 60px 0;
+}
+
+.about-hero {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.about-hero h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #1a1a2e;
+  margin-bottom: 16px;
+}
+
+.about-lead {
+  font-size: 1.15rem;
+  color: #555;
+  max-width: 650px;
+  margin: 0 auto;
+  line-height: 1.8;
+}
+
+/* Mission */
+.about-mission {
+  margin-bottom: 60px;
+}
+
+.mission-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+}
+
+.mission-card {
+  background: white;
+  padding: 36px 28px;
+  border-radius: 16px;
+  text-align: center;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
+}
+
+.mission-icon {
+  font-size: 2.5rem;
+  margin-bottom: 12px;
+}
+
+.mission-card h3 {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+  color: #1a1a2e;
+}
+
+.mission-card p {
+  color: #666;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+/* Problem */
+.about-problem {
+  margin-bottom: 60px;
+  padding: 60px 0;
+}
+
+.problem-content {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+  margin-top: 40px;
+}
+
+.problem-stat {
+  text-align: center;
+  padding: 30px;
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
+}
+
+.big-number {
+  display: block;
+  font-size: 3rem;
+  font-weight: 700;
+  color: #2e7d32;
+  margin-bottom: 12px;
+}
+
+.problem-stat p {
+  color: #555;
+  line-height: 1.6;
+}
+
+/* Team */
+.about-team {
+  padding: 40px 0;
+}
+
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+}
+
+.team-card {
+  background: white;
+  padding: 36px;
+  border-radius: 16px;
+  text-align: center;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
+}
+
+.team-avatar {
+  font-size: 3rem;
+  margin-bottom: 12px;
+}
+
+.team-card h4 {
+  color: #1a1a2e;
+  margin-bottom: 4px;
+}
+
+.team-card p {
+  color: #888;
+  font-size: 0.9rem;
+}
+
+@media (max-width: 768px) {
+  .mission-grid,
+  .problem-content,
+  .team-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .about-hero h1 {
+    font-size: 1.8rem;
+  }
+}

@@ -1,0 +1,145 @@
+.dashboard {
+  padding: 40px 0;
+}
+
+.dashboard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.dashboard-header h1 {
+  font-size: 2rem;
+  color: #1a1a2e;
+}
+
+.dashboard-subtitle {
+  color: #888;
+  font-size: 0.95rem;
+}
+
+/* Add Listing Form */
+.add-listing-form {
+  background: white;
+  border-radius: 16px;
+  padding: 32px;
+  margin-bottom: 30px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+  border: 2px solid #e8f5e9;
+}
+
+.add-listing-form h3 {
+  font-size: 1.3rem;
+  margin-bottom: 24px;
+  color: #1a1a2e;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.add-listing-form .form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 16px;
+}
+
+.add-listing-form label {
+  font-weight: 500;
+  font-size: 0.9rem;
+  color: #333;
+}
+
+.add-listing-form input,
+.add-listing-form select,
+.add-listing-form textarea {
+  padding: 12px 16px;
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: border-color 0.2s;
+  background-color: #fafafa;
+}
+
+.add-listing-form input:focus,
+.add-listing-form select:focus,
+.add-listing-form textarea:focus {
+  border-color: #2e7d32;
+  background-color: white;
+}
+
+.add-listing-form textarea {
+  resize: vertical;
+}
+
+/* Dashboard Stats */
+.dashboard-stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  margin-bottom: 40px;
+}
+
+.dash-stat-card {
+  background: white;
+  border-radius: 12px;
+  padding: 24px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.dash-stat-icon {
+  font-size: 2rem;
+}
+
+.dash-stat-number {
+  display: block;
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #1a1a2e;
+}
+
+.dash-stat-label {
+  font-size: 0.85rem;
+  color: #888;
+}
+
+.listings-title {
+  font-size: 1.5rem;
+  color: #1a1a2e;
+  margin-bottom: 20px;
+}
+
+.listings-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 24px;
+}
+
+@media (max-width: 768px) {
+  .dashboard-stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+
+  .listings-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .dashboard-stats {
+    grid-template-columns: 1fr;
+  }
+}

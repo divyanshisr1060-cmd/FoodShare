@@ -1,0 +1,125 @@
+.available-food {
+  padding: 40px 0;
+}
+
+.page-header {
+  margin-bottom: 30px;
+}
+
+.page-header h1 {
+  font-size: 2rem;
+  color: #1a1a2e;
+  margin-bottom: 8px;
+}
+
+.page-header p {
+  color: #888;
+  font-size: 1rem;
+}
+
+/* Filters */
+.filters {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.search-box {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: white;
+  border: 2px solid #e0e0e0;
+  border-radius: 10px;
+  padding: 12px 16px;
+  transition: border-color 0.2s;
+}
+
+.search-box:focus-within {
+  border-color: #2e7d32;
+}
+
+.search-icon {
+  font-size: 1.1rem;
+}
+
+.search-box input {
+  border: none;
+  width: 100%;
+  font-size: 1rem;
+  background: transparent;
+}
+
+.search-box input::placeholder {
+  color: #bbb;
+}
+
+.filter-buttons {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.filter-btn {
+  padding: 8px 20px;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  background-color: white;
+  color: #555;
+  border: 2px solid #e0e0e0;
+  transition: all 0.2s ease;
+}
+
+.filter-btn:hover {
+  border-color: #2e7d32;
+  color: #2e7d32;
+}
+
+.filter-btn.active {
+  background-color: #2e7d32;
+  color: white;
+  border-color: #2e7d32;
+}
+
+.results-count {
+  color: #888;
+  font-size: 0.9rem;
+  margin-bottom: 20px;
+}
+
+/* Food Grid */
+.food-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 24px;
+}
+
+/* No Results */
+.no-results {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 60px 20px;
+}
+
+.no-results-icon {
+  font-size: 3rem;
+  display: block;
+  margin-bottom: 12px;
+}
+
+.no-results h3 {
+  color: #555;
+  margin-bottom: 8px;
+}
+
+.no-results p {
+  color: #888;
+}
+
+@media (max-width: 768px) {
+  .food-grid {
+    grid-template-columns: 1fr;
+  }
+}
