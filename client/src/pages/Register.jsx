@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { useAuth } from '../context/AuthContext';
 import './Register.css';
 
 function Register() {
@@ -12,20 +13,49 @@ function Register() {
     organization: '',
     phone: '',
   });
+  const [error, setError] = useState('');
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const { register } = useAuth();
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
+    if (error) setError('');
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    setError('');
+
     if (formData.password !== formData.confirmPassword) {
-      alert('Passwords do not match!');
+      setError('Passwords do not match. Please re-enter.');
       return;
     }
-    // TODO: Connect to backend API
-    console.log('Register:', formData);
-    alert('Registration functionality will be available after backend integration.');
+
+    if (formData.password.length < 6) {
+      setError('Password must be at least 6 characters long.');
+      return;
+    }
+
+    setIsSubmitting(true);
+
+    try {
+      await register({
+        name: formData.name,
+        email: formData.email,
+        password: formData.password,
+        role: formData.role,
+        organization: formData.organization,
+        phone: formData.phone,
+      });
+
+      navigate('/dashboard');
+    } catch (err) {
+      setError(err.message || 'Registration failed. Please check your details.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -36,6 +66,8 @@ function Register() {
             <h2>Create Account</h2>
             <p>Join FoodShare and make a difference</p>
           </div>
+
+          {error && <div className="auth-error-banner">⚠️ {error}</div>}
 
           <form onSubmit={handleSubmit} className="auth-form">
             <div className="form-group">
@@ -111,7 +143,7 @@ function Register() {
                 name="password"
                 value={formData.password}
                 onChange={handleChange}
-                placeholder="Create a password"
+                placeholder="Create a password (min 6 characters)"
                 required
                 minLength="6"
               />
@@ -131,8 +163,12 @@ function Register() {
               />
             </div>
 
-            <button type="submit" className="btn btn-primary auth-btn">
-              Create Account
+            <button
+              type="submit"
+              className="btn btn-primary auth-btn"
+              disabled={isSubmitting}
+            >
+              {isSubmitting ? 'Creating Account...' : 'Create Account'}
             </button>
           </form>
 

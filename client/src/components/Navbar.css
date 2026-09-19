@@ -52,8 +52,42 @@
 
 .nav-auth {
   display: flex;
+  align-items: center;
   gap: 10px;
   margin-left: 12px;
+}
+
+.nav-user-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.user-profile-tag {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background-color: #f1f8e9;
+  padding: 5px 12px;
+  border-radius: 20px;
+  border: 1px solid #c8e6c9;
+}
+
+.user-role-badge {
+  background-color: #2e7d32;
+  color: white;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  padding: 2px 8px;
+  border-radius: 10px;
+  letter-spacing: 0.5px;
+}
+
+.user-display-name {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #1a1a2e;
 }
 
 .btn-sm {

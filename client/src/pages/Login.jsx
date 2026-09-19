@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { useAuth } from '../context/AuthContext';
 import './Login.css';
 
 function Login() {
@@ -7,16 +8,30 @@ function Login() {
     email: '',
     password: '',
   });
+  const [error, setError] = useState('');
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const { login } = useAuth();
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
+    if (error) setError('');
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // TODO: Connect to backend API
-    console.log('Login:', formData);
-    alert('Login functionality will be available after backend integration.');
+    setError('');
+    setIsSubmitting(true);
+
+    try {
+      await login(formData.email, formData.password);
+      navigate('/dashboard');
+    } catch (err) {
+      setError(err.message || 'Login failed. Please check your email and password.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -27,6 +42,8 @@ function Login() {
             <h2>Welcome Back</h2>
             <p>Login to your FoodShare account</p>
           </div>
+
+          {error && <div className="auth-error-banner">⚠️ {error}</div>}
 
           <form onSubmit={handleSubmit} className="auth-form">
             <div className="form-group">
@@ -55,8 +72,12 @@ function Login() {
               />
             </div>
 
-            <button type="submit" className="btn btn-primary auth-btn">
-              Login
+            <button
+              type="submit"
+              className="btn btn-primary auth-btn"
+              disabled={isSubmitting}
+            >
+              {isSubmitting ? 'Logging in...' : 'Login'}
             </button>
           </form>
 

@@ -21,6 +21,61 @@
   font-size: 0.95rem;
 }
 
+.dash-notification {
+  padding: 14px 20px;
+  border-radius: 8px;
+  margin-bottom: 24px;
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+.dash-notification.success {
+  background-color: #e8f5e9;
+  color: #2e7d32;
+  border: 1px solid #c8e6c9;
+}
+
+.dash-notification.error {
+  background-color: #ffebee;
+  color: #c62828;
+  border: 1px solid #ffcdd2;
+}
+
+.auth-prompt-card {
+  background: white;
+  border-radius: 16px;
+  padding: 60px 40px;
+  text-align: center;
+  max-width: 550px;
+  margin: 40px auto;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+.prompt-icon {
+  font-size: 3.5rem;
+  margin-bottom: 16px;
+}
+
+.auth-prompt-card h2 {
+  font-size: 1.8rem;
+  color: #1a1a2e;
+  margin-bottom: 12px;
+}
+
+.auth-prompt-card p {
+  color: #666;
+  font-size: 1rem;
+  margin-bottom: 30px;
+  line-height: 1.6;
+}
+
+.prompt-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
 /* Add Listing Form */
 .add-listing-form {
   background: white;
@@ -33,8 +88,73 @@
 
 .add-listing-form h3 {
   font-size: 1.3rem;
-  margin-bottom: 24px;
+  margin-bottom: 8px;
   color: #1a1a2e;
+}
+
+.form-helper-text {
+  font-size: 0.9rem;
+  color: #666;
+  margin-bottom: 24px;
+}
+
+/* Tabs */
+.dash-tabs {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 24px;
+  border-bottom: 2px solid #e0e0e0;
+  padding-bottom: 2px;
+}
+
+.dash-tab-btn {
+  padding: 10px 20px;
+  font-size: 1rem;
+  font-weight: 600;
+  background: none;
+  border: none;
+  color: #777;
+  cursor: pointer;
+  position: relative;
+  transition: all 0.2s ease;
+}
+
+.dash-tab-btn:hover {
+  color: #2e7d32;
+}
+
+.dash-tab-btn.active {
+  color: #2e7d32;
+  border-bottom: 3px solid #2e7d32;
+  margin-bottom: -4px;
+}
+
+.dash-empty-state {
+  background: white;
+  border-radius: 16px;
+  padding: 50px 30px;
+  text-align: center;
+  border: 1px dashed #c8e6c9;
+  margin-top: 10px;
+}
+
+.empty-icon {
+  font-size: 3rem;
+  display: block;
+  margin-bottom: 12px;
+}
+
+.dash-empty-state h3 {
+  color: #1a1a2e;
+  margin-bottom: 8px;
+}
+
+.dash-empty-state p {
+  color: #777;
+  margin-bottom: 20px;
+  max-width: 450px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .form-row {
