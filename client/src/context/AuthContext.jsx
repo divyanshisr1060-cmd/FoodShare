@@ -1,4 +1,5 @@
 import { createContext, useContext, useState, useEffect } from 'react';
+import { API_ENDPOINTS } from '../config/api';
 
 const AuthContext = createContext(null);
 
@@ -13,7 +14,7 @@ export const AuthProvider = ({ children }) => {
       const storedToken = localStorage.getItem('foodshare_token');
       if (storedToken) {
         try {
-          const res = await fetch('/api/auth/me', {
+          const res = await fetch(API_ENDPOINTS.AUTH.ME, {
             headers: {
               Authorization: `Bearer ${storedToken}`,
             },
@@ -43,7 +44,7 @@ export const AuthProvider = ({ children }) => {
 
   // Login function
   const login = async (email, password) => {
-    const res = await fetch('/api/auth/login', {
+    const res = await fetch(API_ENDPOINTS.AUTH.LOGIN, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ email, password }),
@@ -62,7 +63,7 @@ export const AuthProvider = ({ children }) => {
 
   // Register function
   const register = async (userData) => {
-    const res = await fetch('/api/auth/register', {
+    const res = await fetch(API_ENDPOINTS.AUTH.REGISTER, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(userData),

@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
+import { API_ENDPOINTS } from '../config/api';
 import FoodCard from '../components/FoodCard';
 import './Dashboard.css';
 
@@ -30,10 +31,10 @@ function Dashboard() {
     try {
       setIsLoading(true);
       const [listingsRes, claimsRes] = await Promise.all([
-        fetch('/api/food/my-listings', {
+        fetch(API_ENDPOINTS.FOOD.MY_LISTINGS, {
           headers: { Authorization: `Bearer ${token}` },
         }),
-        fetch('/api/food/my-claims', {
+        fetch(API_ENDPOINTS.FOOD.MY_CLAIMS, {
           headers: { Authorization: `Bearer ${token}` },
         }),
       ]);
@@ -70,7 +71,7 @@ function Dashboard() {
     setNotification({ message: '', type: '' });
 
     try {
-      const res = await fetch('/api/food', {
+      const res = await fetch(API_ENDPOINTS.FOOD.BASE, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -120,7 +121,7 @@ function Dashboard() {
     }
 
     try {
-      const res = await fetch(`/api/food/${foodId}`, {
+      const res = await fetch(API_ENDPOINTS.FOOD.BY_ID(foodId), {
         method: 'DELETE',
         headers: { Authorization: `Bearer ${token}` },
       });
@@ -146,7 +147,7 @@ function Dashboard() {
 
   const handleStatusChange = async (foodId, newStatus) => {
     try {
-      const res = await fetch(`/api/food/${foodId}/status`, {
+      const res = await fetch(API_ENDPOINTS.FOOD.STATUS(foodId), {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',

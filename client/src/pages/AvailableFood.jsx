@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
+import { API_ENDPOINTS } from '../config/api';
 import FoodCard from '../components/FoodCard';
 import './AvailableFood.css';
 
@@ -19,7 +20,7 @@ function AvailableFood() {
   const fetchFood = async () => {
     try {
       setLoading(true);
-      const res = await fetch('/api/food');
+      const res = await fetch(API_ENDPOINTS.FOOD.BASE);
       if (res.ok) {
         const data = await res.json();
         setListings(data);
@@ -47,7 +48,7 @@ function AvailableFood() {
 
     try {
       setClaimingId(foodId);
-      const res = await fetch(`/api/food/${foodId}/claim`, {
+      const res = await fetch(API_ENDPOINTS.FOOD.CLAIM(foodId), {
         method: 'PUT',
         headers: {
           Authorization: `Bearer ${token}`,
